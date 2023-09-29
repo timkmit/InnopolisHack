@@ -9,19 +9,32 @@ import {
   Group,
   CellButton,
   Header,
+  Search,
+  Cell
 } from '@vkontakte/vkui';
+import { Icon20UserOutline } from '@vkontakte/icons';
+import { Icon20MessageAddOutline } from '@vkontakte/icons';
+import { Icon20LogoVkOutline } from '@vkontakte/icons';
+import { Icon28UserOutline } from '@vkontakte/icons';
 import Accordion from '../components/Accordion';
-
+import { usePlatform } from '@vkontakte/vkui';
 
 function IndexPanel() {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const platform = usePlatform();
+    const menuButtonColor = platform === 'ios' ? 'grey' : 'white';
 
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [search, setSearch] = useState('');
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
   const closeSidebar = () => {
     setSidebarOpen(false);
+  };
+
+  const onChange = (e) => {
+    setSearch(e.target.value); // Обновляем search при изменении значения
   };
 
   return (
@@ -64,10 +77,34 @@ function IndexPanel() {
       >
         <Panel id="main">
           <PanelHeader>
-            <Button onClick={toggleSidebar} style={{ position: 'absolute', top: '12px', left: '5px' }}>Меню</Button>
+            <Button onClick={toggleSidebar} style={{ position: 'absolute', top: '12px', left: '5px', backgroundColor: menuButtonColor }}>Меню</Button>
+            
+            
           </PanelHeader>
-          <div>Основа</div>
+          <Search value={search} onChange={onChange} after={null} style={{}}/>
+          <div>Основа
+          
+
+          </div>
+          
         </Panel>
+        <Panel id="panel1">
+            <div style={{fontWeight:'bold', fontSize:'20px', marginLeft:'10px'}}>
+            Мое пространство
+            </div>
+            
+        <Group>
+          <Cell expandable before={<Icon20UserOutline />} onClick={() => setActivePanel('panel2')}>
+            Friends
+          </Cell>
+          <Cell expandable before={<Icon20MessageAddOutline />} onClick={() => setActivePanel('panel2')}>
+            Communities
+          </Cell>
+          <Cell expandable before={<Icon20LogoVkOutline />} onClick={() => setActivePanel('panel2')}>
+            Music
+          </Cell>
+        </Group>
+      </Panel>
       </SplitCol>
     </SplitLayout>
   );
