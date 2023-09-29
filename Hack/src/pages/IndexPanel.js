@@ -12,10 +12,7 @@ import {
   Search,
   Cell
 } from '@vkontakte/vkui';
-import { Icon20UserOutline } from '@vkontakte/icons';
-import { Icon20MessageAddOutline } from '@vkontakte/icons';
-import { Icon20LogoVkOutline } from '@vkontakte/icons';
-import { Icon28UserOutline } from '@vkontakte/icons';
+import { Icon56StickerOutline } from '@vkontakte/icons';
 import Accordion from '../components/Accordion';
 import { usePlatform } from '@vkontakte/vkui';
 
@@ -94,15 +91,7 @@ function IndexPanel() {
             </div>
             
         <Group>
-          <Cell expandable before={<Icon20UserOutline />} onClick={() => setActivePanel('panel2')}>
-            Friends
-          </Cell>
-          <Cell expandable before={<Icon20MessageAddOutline />} onClick={() => setActivePanel('panel2')}>
-            Communities
-          </Cell>
-          <Cell expandable before={<Icon20LogoVkOutline />} onClick={() => setActivePanel('panel2')}>
-            Music
-          </Cell>
+          <Icon56StickerOutline style={{marginLeft:'30px'}}/>
         </Group>
       </Panel>
       </SplitCol>
