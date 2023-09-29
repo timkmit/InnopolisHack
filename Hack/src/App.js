@@ -8,7 +8,7 @@ import useVkUserInfo from './hooks/useUserInfo';
 
 function App() {
   const [simple, setSimple] = useState('one');
-  const { userInfo, loading, error } = useVkUserInfo(); 
+  const { userInfo, loading, error } = useVkUserInfo();
   console.log('userInfo:', userInfo);
   console.log('loading:', loading);
   console.log('error:', error);
